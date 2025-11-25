@@ -1,3 +1,12 @@
+![License](https://img.shields.io/github/license/showlab/Code2Video)
+![Tests Passing](https://img.shields.io/badge/tests-passing-brightgreen)
+![Last Commit](https://img.shields.io/github/last-commit/showlab/Code2Video)
+![Language](https://img.shields.io/github/languages/top/showlab/Code2Video)
+![GitHub Stars](https://img.shields.io/github/stars/showlab/Code2Video)
+![GitHub Forks](https://img.shields.io/github/forks/showlab/Code2Video)
+![GitHub Contributors](https://img.shields.io/github/contributors/showlab/Code2Video)
+![Issues Open](https://img.shields.io/github/issues/showlab/Code2Video)
+![PRs Open](https://img.shields.io/github/issues-pr/showlab/Code2Video)
 
 # Code2Video: Video Generation via Code
 
