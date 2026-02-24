@@ -118,11 +118,11 @@ class SmartSVGDownloader:
             response = self.api_function(prompt, max_tokens=100)[0]
             try:
                 content = response.candidates[0].content.parts[0].text
-            except:
+            except Exception:
                 content = response.choices[0].message.content
             elements = [line.strip().lower() for line in content.strip().split("\n") if line.strip()]
             return list(dict.fromkeys(elements))[:4]
-        except:
+        except Exception:
             return []
 
     def _check_cache(self, element: str) -> Optional[str]:
@@ -162,7 +162,7 @@ class SmartSVGDownloader:
                     filepath = self.assets_dir / f"{element}.png"
                     filepath.write_bytes(img_resp.content)
                     return str(filepath.absolute())
-        except:
+        except Exception:
             return None
 
     def _download_iconify(self, element: str) -> Optional[str]:
@@ -178,7 +178,7 @@ class SmartSVGDownloader:
                     filepath = self.assets_dir / f"{element}.svg"
                     filepath.write_text(svg_resp.text, encoding="utf-8")
                     return str(filepath.absolute())
-        except:
+        except Exception:
             return None
 
     def _enhance_animations(self, animations: List[str], assets: Dict[str, str]) -> List[str]:
