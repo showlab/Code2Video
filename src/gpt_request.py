@@ -1035,6 +1035,101 @@ def request_gpt41_img(prompt, image_path=None, log_id=None, max_tokens=1000, max
             time.sleep(delay)
 
 
+def request_minimax(prompt, log_id=None, max_tokens=8000, max_retries=3):
+    """
+    Makes a request to the MiniMax model via OpenAI-compatible API with retry functionality.
+
+    Args:
+        prompt (str): The text prompt to send to the model
+        log_id (str, optional): The log ID for tracking requests, defaults to tkb+timestamp
+        max_tokens (int, optional): Maximum tokens for response, default 8000
+        max_retries (int, optional): Maximum number of retry attempts, default 3
+
+    Returns:
+        str: The model's response content
+    """
+    base_url = cfg("minimax", "base_url")
+    api_key = cfg("minimax", "api_key")
+    model_name = cfg("minimax", "model")
+
+    client = OpenAI(base_url=base_url, api_key=api_key)
+
+    if log_id is None:
+        log_id = generate_log_id()
+
+    retry_count = 0
+    while retry_count < max_retries:
+        try:
+            completion = client.chat.completions.create(
+                model=model_name,
+                messages=[{"role": "user", "content": prompt}],
+                max_tokens=max_tokens,
+            )
+            return completion.choices[0].message.content.strip()
+        except Exception as e:
+            retry_count += 1
+            if retry_count >= max_retries:
+                raise Exception(f"Failed after {max_retries} attempts. Last error: {str(e)}")
+
+            delay = (2**retry_count) * 0.1 + (random.random() * 0.1)
+            print(
+                f"Request failed with error: {str(e)}. Retrying in {delay:.2f} seconds... (Attempt {retry_count}/{max_retries})"
+            )
+            time.sleep(delay)
+
+
+def request_minimax_token(prompt, log_id=None, max_tokens=8000, max_retries=3):
+    """
+    Makes a request to the MiniMax model via OpenAI-compatible API with retry and token tracking.
+
+    Args:
+        prompt (str): The text prompt to send to the model
+        log_id (str, optional): The log ID for tracking requests, defaults to tkb+timestamp
+        max_tokens (int, optional): Maximum tokens for response, default 8000
+        max_retries (int, optional): Maximum number of retry attempts, default 3
+
+    Returns:
+        tuple: (completion, usage_info) where usage_info is a dict with token counts
+    """
+    base_url = cfg("minimax", "base_url")
+    api_key = cfg("minimax", "api_key")
+    model_name = cfg("minimax", "model")
+
+    client = OpenAI(base_url=base_url, api_key=api_key)
+
+    if log_id is None:
+        log_id = generate_log_id()
+
+    usage_info = {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0}
+
+    retry_count = 0
+    while retry_count < max_retries:
+        try:
+            completion = client.chat.completions.create(
+                model=model_name,
+                messages=[{"role": "user", "content": prompt}],
+                max_tokens=max_tokens,
+            )
+
+            if completion.usage:
+                usage_info["prompt_tokens"] = completion.usage.prompt_tokens
+                usage_info["completion_tokens"] = completion.usage.completion_tokens
+                usage_info["total_tokens"] = completion.usage.total_tokens
+            return completion, usage_info
+
+        except Exception as e:
+            retry_count += 1
+            if retry_count >= max_retries:
+                raise Exception(f"Failed after {max_retries} attempts. Last error: {str(e)}")
+
+            delay = (2**retry_count) * 0.1 + (random.random() * 0.1)
+            print(
+                f"Request failed with error: {str(e)}. Retrying in {delay:.2f} seconds... (Attempt {retry_count}/{max_retries})"
+            )
+            time.sleep(delay)
+    return None, usage_info
+
+
 if __name__ == "__main__":
 
     # Gemini
