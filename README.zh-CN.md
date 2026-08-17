@@ -211,4 +211,4 @@ src/
 ```
 
 如果您喜欢我们的项目，欢迎在 GitHub 上给我们一个 Star ⭐ 以获取最新动态！
-[![Star History Chart](https://api.star-history.com/svg?repos=showlab/Code2Video&type=Date)](https://star-history.com/#showlab/Code2Video&Date)
+[![Star History Chart](https://star-history.dera.page/svg?repos=showlab/Code2Video&type=Date)](https://star-history.dera.page/#showlab/Code2Video&Date)

@@ -357,4 +357,4 @@ If you find our work useful, please cite:
 ```
 
 If you like our project, please give us a star ⭐ on [GitHub](https://github.com/showlab/Code2Video) for the latest update!
-[![Star History Chart](https://api.star-history.com/svg?repos=showlab/Code2Video&type=Date)](https://star-history.com/#showlab/Code2Video&Date)
+[![Star History Chart](https://star-history.dera.page/svg?repos=showlab/Code2Video&type=Date)](https://star-history.dera.page/#showlab/Code2Video&Date)
