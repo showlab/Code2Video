@@ -225,9 +225,10 @@ Here is the [official installation guide](https://docs.manim.community/en/stable
 
 Fill in your **API credentials** in `api_config.json`.
 
-* **LLM API**: 
+* **LLM API**:
   * Required for Planner & Coder.
   * Best Manim code quality achieved with **Claude-4-Opus**.
+  * Also supports [MiniMax](https://www.minimaxi.com/) via OpenAI-compatible API (`MiniMax-M2.7` with 1M context window).
 * **VLM API**:
   * Required for Planner Critic.
   * For layout and aesthetics optimization, provide **Gemini API key**.

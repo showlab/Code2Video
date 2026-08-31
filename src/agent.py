@@ -815,6 +815,7 @@ def get_api_and_output(API_name):
         "gpt-4o": (request_gpt4o_token, "Chatgpt4o"),
         "gpt-o4mini": (request_o4mini_token, "Chatgpto4mini"),
         "Gemini": (request_gemini_token, "Gemini"),
+        "minimax": (request_minimax_token, "MiniMax"),
     }
     try:
         return mapping[API_name]
@@ -828,7 +829,7 @@ def build_and_parse_args():
     parser.add_argument(
         "--API",
         type=str,
-        choices=["gpt-41", "claude", "gpt-5", "gpt-4o", "gpt-o4mini", "Gemini"],
+        choices=["gpt-41", "claude", "gpt-5", "gpt-4o", "gpt-o4mini", "Gemini", "minimax"],
         default="gpt-41",
     )
     parser.add_argument(

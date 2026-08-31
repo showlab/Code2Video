@@ -33,6 +33,11 @@
         "base_url": "...",
         "api_key": "..."
     },
+    "minimax": {
+        "base_url": "https://api.minimax.io/v1",
+        "api_key": "YOUR_MINIMAX_API_KEY",
+        "model": "MiniMax-M2.7"
+    },
     "iconfinder": {
         "api_key": "YOUR_ICONFINDER_KEY"
     }
