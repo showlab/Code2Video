@@ -20,7 +20,7 @@
 
 
 <p align="center">
-  <a href="https://scholar.google.com.hk/citations?user=9lIMS-EAAAAJ&hl=zh-CN&oi=sra">Yanzhe Chen*</a>,
+  <a href="https://chenyanzhe.page/">Yanzhe Chen*</a>,
   <a href="https://qhlin.me/">Kevin Qinghong Lin*</a>,
   <a href="https://scholar.google.com/citations?user=h1-3lSoAAAAJ&hl=en">Mike Zheng Shou</a> <br>
   Show Lab @ National University of Singapore
